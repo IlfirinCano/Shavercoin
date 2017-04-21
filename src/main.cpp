@@ -1087,11 +1087,11 @@ uint256 static GetOrphanRoot(const CBlockHeader* pblock)
 
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
-    int64 nSubsidy = 500 * COIN;
+    int64 nSubsidy = 50 * COIN;
 
-	if(nHeight == 10)  
+	if(nHeight == 40)  
      {
-         nSubsidy = 2000000 * COIN;
+         nSubsidy = 10000000 * COIN;
      }
      else if(nHeight < 50)  
      {
@@ -1108,7 +1108,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
     return nSubsidy + nFees;
 }
 
-static const int64 nTargetTimespan = 3.5 * 24 * 60 * 60; // Shavercoin: 3.5 days
+static const int64 nTargetTimespan = 10 * 30; // Shavercoin: 5 minutes
 static const int64 nTargetSpacing = 1 * 30; // Shavercoin: 30 seconds
 static const int64 nInterval = nTargetTimespan / nTargetSpacing;
 
