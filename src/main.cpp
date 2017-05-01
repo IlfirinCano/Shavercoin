@@ -35,7 +35,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0xfaada989c02db0cda05961abc09a9488a195fb126ee96bf58b4b801cf71b3c97");
+uint256 hashGenesisBlock("0x");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Shavercoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -1087,23 +1087,20 @@ uint256 static GetOrphanRoot(const CBlockHeader* pblock)
 
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
-    int64 nSubsidy = 50 * COIN;
+    int64 nSubsidy = 5 * COIN;
 
-	if(nHeight == 45)  
+	if(nHeight == 3)  
      {
          nSubsidy = 10000000 * COIN;
      }
-     else if(nHeight < 50)  
+     else if(nHeight < 5)  
      {
          nSubsidy = 5000 * COIN;
      }
-     else if(nHeight < 60)  
-     {
-         nSubsidy = 2500 * COIN;
-     }
+     
 	
-    // Subsidy is cut in half every 840000 blocks, which will occur approximately every 4 years
-    nSubsidy >>= (nHeight / 840000); // Shavercoin: 840k blocks in ~4 years
+    // Subsidy is cut in half every 1000 blocks, which will occur approximately every 4 years
+    nSubsidy >>= (nHeight / 1000); // Shavercoin: 1k blocks in ~4 years
 
     return nSubsidy + nFees;
 }
@@ -2759,7 +2756,7 @@ bool LoadBlockIndex()
         pchMessageStart[1] = 0xb2;
         pchMessageStart[2] = 0xa4;
         pchMessageStart[3] = 0xdc;
-        hashGenesisBlock = uint256("0xfaada989c02db0cda05961abc09a9488a195fb126ee96bf58b4b801cf71b3c97");
+        hashGenesisBlock = uint256("0x");
     }
 
     //
@@ -2792,7 +2789,7 @@ bool InitBlockIndex() {
         //   vMerkleTree: 97ddfbbae6
 
         // Genesis block
-        const char* pszTimestamp = "I make this coin";
+        const char* pszTimestamp = "I make this coin. SHAVERcoin. 01.05.2017";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -2804,14 +2801,14 @@ bool InitBlockIndex() {
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1491141979;
+        block.nTime    = 1493659636;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 501320;
+        block.nNonce   = 0;
 
         if (fTestNet)
         {
-            block.nTime    = 1491141979;
-            block.nNonce   = 501320;
+            block.nTime    = 1493659636;
+            block.nNonce   = 0;
         }
 
         //// debug print
