@@ -35,7 +35,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x");
+uint256 hashGenesisBlock("0xee566befd24f6bf149cf47c6a50e016faa0c968175808b94c0579657dd9cc0c4");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Shavercoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2756,7 +2756,7 @@ bool LoadBlockIndex()
         pchMessageStart[1] = 0xb2;
         pchMessageStart[2] = 0xa4;
         pchMessageStart[3] = 0xdc;
-        hashGenesisBlock = uint256("0x");
+        hashGenesisBlock = uint256("0xee566befd24f6bf149cf47c6a50e016faa0c968175808b94c0579657dd9cc0c4");
     }
 
     //
@@ -2803,12 +2803,12 @@ bool InitBlockIndex() {
         block.nVersion = 1;
         block.nTime    = 1493659636;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 0;
+        block.nNonce   = 664772;
 
         if (fTestNet)
         {
             block.nTime    = 1493659636;
-            block.nNonce   = 0;
+            block.nNonce   = 664772;
         }
 
         //// debug print
